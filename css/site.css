@@ -71,32 +71,22 @@ svg.i{width:1em;height:1em;flex:none;stroke:currentColor;fill:none;stroke-width:
 .sheet a{font-size:calc(var(--ds)*clamp(44px,13vw,72px));line-height:1.06;text-decoration:none;display:block}
 
 /* Hero */
-.hero{position:relative;height:100svh;min-height:600px;overflow:hidden}
-.hero .ph{position:absolute;inset:0;transform-origin:47% 60%;animation:arrive 3s cubic-bezier(.2,.75,.2,1) both}
+.hero{position:relative;height:100svh;min-height:600px;overflow:hidden;background:#000}
+.hero .ph{position:absolute;inset:0}
 .hero .ph img,.hero .ph video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%}
-.hero .ph img{transform-origin:47% 60%;animation:zoomout 42s cubic-bezier(.3,.1,.3,1) both}
-.hero .ph video{display:none}
-/* video intro mode */
-.vid .hero .ph{animation:none;transform:scale(1.09)}
-.vid .hero .ph img{animation:none;transition:opacity .7s ease}
-.intro-on .hero .ph img{opacity:0}
-.hero{background:#000}
-.vid .hero .ph video{display:block;transition:opacity .7s ease}
-.vid .hero .ph video.out,.hero .ph img.anim.out{opacity:0}
-.hero .ph img.anim{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%;opacity:1!important;animation:none;transition:opacity .7s ease}
-@media (max-width:899px) and (orientation:portrait){.hero .ph img{object-position:46% 50%}}
-.vid .hero.go .ph{animation:zoomout 42s cubic-bezier(.3,.1,.3,1) both}
+.hero .ph video{opacity:0;transition:opacity 1.2s ease}
+.hero .ph video.on{opacity:1}
+/* loop mode: the text waits for the video */
 .vid .hero:not(.go) h1 .ln > span,.vid .hero:not(.go) .lead,.vid .hero:not(.go) .ctas,.vid .hero:not(.go) .cue,.vid .hero:not(.go) .underline::after{animation:none;opacity:0}
 .vid .hero h1 .ln:nth-child(1) > span{animation-delay:.1s}
-.vid .hero h1 .ln:nth-child(2) > span{animation-delay:.22s}
-.vid .hero h1 .ln:nth-child(3) > span{animation-delay:.34s}
-.vid .hero .underline::after{animation-delay:.9s}
-.vid .hero .lead{animation-delay:.7s}
-.vid .hero .ctas{animation-delay:.85s}
-.vid .hero .cue{animation-delay:1.1s}
-.vid .hero::after{opacity:.35;transition:opacity 1.2s ease}
+.vid .hero h1 .ln:nth-child(2) > span{animation-delay:.24s}
+.vid .hero h1 .ln:nth-child(3) > span{animation-delay:.38s}
+.vid .hero .underline::after{animation-delay:1s}
+.vid .hero .lead{animation-delay:.8s}
+.vid .hero .ctas{animation-delay:.95s}
+.vid .hero .cue{animation-delay:1.2s}
+.vid .hero::after{opacity:.3;transition:opacity 1.6s ease}
 .vid .hero.go::after{opacity:1}
-.intro-on .top{opacity:0;pointer-events:none}
 .top{transition:opacity .8s ease,background .4s var(--ease),backdrop-filter .4s}
 .hero::after{content:"";position:absolute;inset:0;background:
   linear-gradient(180deg,rgba(6,17,12,.72) 0%,rgba(6,17,12,.3) 13%,rgba(6,17,12,0) 28%),
@@ -199,7 +189,7 @@ section{position:relative}
 .contact .big{font-size:calc(var(--ds)*clamp(60px,11vw,176px));line-height:.9}
 .contact .row{margin-top:clamp(40px,6vw,72px);padding-top:28px;border-top:1px solid rgba(238,234,226,.16);display:grid;grid-template-columns:minmax(0,1fr) auto;gap:24px 48px;align-items:end}
 .contact .row h3{font-size:calc(var(--ds)*clamp(26px,2.6vw,38px));line-height:1.05}
-.contact .row p{margin-top:14px;font-size:clamp(19px,1.8vw,24px);line-height:1.4;color:var(--osso-2)}
+.contact .row p{margin-top:14px;font-size:clamp(17px,1.62vw,21.5px);line-height:1.4;color:var(--osso-2)}
 .contact .row p a{text-decoration:none;color:var(--osso)}
 .contact .acts{display:flex;flex-wrap:wrap;gap:10px}
 .copy-btn{background:none;border:1px solid rgba(238,234,226,.3);color:var(--osso);min-height:48px;padding:0 16px;font:500 15px var(--body);border-radius:2px;cursor:pointer;display:inline-flex;align-items:center;gap:8px;transition:border-color .3s}
@@ -331,7 +321,7 @@ dialog.cupom[open]{animation:pop .5s var(--ease)}
 .brands{background:var(--verde)}
 .brands .head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:clamp(32px,5vw,56px)}
 .brands .head p{color:var(--osso-2);max-width:40ch}
-.cards{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:clamp(10px,1.2vw,18px)}
+.cards{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:clamp(10px,1.2vw,18px)}
 .card{display:block;text-decoration:none;color:inherit;background:none;border:0;padding:0;text-align:left;cursor:pointer;font:inherit}
 .card .ph{position:relative;aspect-ratio:1000/1362;overflow:hidden;background:var(--mata);transition:transform .6s var(--ease),box-shadow .6s var(--ease)}
 .card img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
@@ -400,3 +390,23 @@ dialog.cupom[open]{animation:pop .5s var(--ease)}
   .top.scrolled .wrap{height:64px}
   .top.scrolled .mark img{width:140px}
 }
+
+/* partnerships: six numbers in two rows */
+.ledger.six div:nth-child(3n+1){padding-left:0;border-left:0}
+.ledger.six div:nth-child(n+4){border-top:1px solid rgba(238,234,226,.16);margin-top:18px}
+/* brand cards: photo link + caption links */
+.card{cursor:default}
+.card .hit{display:block;width:100%;background:none;border:0;padding:0;cursor:pointer;color:inherit}
+.card .cap a,.card .cap button{display:inline-flex;align-items:center;gap:.4em;color:var(--osso-2);font:inherit;font-size:14px;text-decoration:none;background:none;border:0;padding:0;cursor:pointer;transition:color .3s}
+.card .cap a:hover,.card .cap button:hover{color:var(--osso)}
+.card .cap a:hover .i,.card .cap button:hover .i{transform:translate(2px,-2px)}
+.card:hover .cap .i{transform:none}
+/* smaller contact headline (partnerships) */
+.contact.sm .big{font-size:calc(var(--ds)*clamp(52px,9vw,144px))}
+.contact.sm .row h3{font-size:calc(var(--ds)*clamp(22px,2.2vw,32px))}
+.phero p b{color:var(--osso);font-weight:600}
+@media (max-width:640px){.ledger.six div:nth-child(n+2){border-top:1px solid rgba(238,234,226,.16);margin-top:0}}
+.ledger.six b{font-size:calc(var(--ds)*clamp(36px,3.9vw,60px))}
+.creator .ctas{flex-wrap:nowrap;gap:10px}
+.creator .ctas .btn{font-size:14px;padding:.8em 1.1em;min-height:46px;white-space:nowrap}
+@media (max-width:640px){.creator .ctas{display:grid;grid-template-columns:1fr 1fr}.creator .ctas .btn{justify-content:center;padding:.8em .6em}.creator .ctas .btn-red{grid-column:1/-1}}
