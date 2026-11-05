@@ -190,15 +190,15 @@ try{if(!location.hash&&!matchMedia("(prefers-reduced-motion: reduce)").matches)d
   var root=document.documentElement, hero=document.getElementById('inicio'), vid=document.getElementById('loop'), t=0;
   function go(){ if(!hero.classList.contains('go'))hero.classList.add('go') }
   function soon(){ if(!t)t=setTimeout(go,2800) }
+  function still(){ hero.classList.add('still'); go() }
   if(root.classList.contains('vid')&&vid&&vid.play){
     var W=window.innerWidth,H=window.innerHeight,tall=H>W;
     vid.muted=true; vid.defaultMuted=true; vid.setAttribute('muted','');
-    vid.poster=tall?'img/loop-poster-mobile.jpg':'img/loop-poster.jpg';
     vid.src=tall?'img/loop-mobile.mp4':(W<1100?'img/loop-720.mp4':'img/loop-1080.mp4');
     vid.addEventListener('playing',function(){vid.classList.add('on');soon()});
-    vid.addEventListener('error',go);
-    var pr=vid.play(); if(pr&&pr.catch)pr.catch(go);
-    setTimeout(function(){ if(!t)go() },6000);
+    vid.addEventListener('error',still);
+    var pr=vid.play(); if(pr&&pr.catch)pr.catch(still);
+    setTimeout(function(){ if(!t)still() },6000);
   } else go();
 })();
 </script>
