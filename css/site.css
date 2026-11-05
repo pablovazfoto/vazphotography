@@ -74,7 +74,10 @@ svg.i{width:1em;height:1em;flex:none;stroke:currentColor;fill:none;stroke-width:
 .hero{position:relative;height:100svh;min-height:600px;overflow:hidden;background:#000}
 .hero .ph{position:absolute;inset:0}
 .hero .ph img,.hero .ph video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%}
-.hero .ph video{opacity:0;transition:opacity 1.2s ease}
+.hero .ph video{opacity:0;transition:opacity .5s ease}
+/* loop mode: start on black; the still shows only if the video cannot play */
+.vid .hero .ph img{opacity:0;transition:opacity .5s ease}
+.vid .hero.still .ph img{opacity:1}
 .hero .ph video.on{opacity:1}
 /* loop mode: the text waits for the video */
 .vid .hero:not(.go) h1 .ln > span,.vid .hero:not(.go) .lead,.vid .hero:not(.go) .ctas,.vid .hero:not(.go) .cue,.vid .hero:not(.go) .underline::after{animation:none;opacity:0}
